@@ -1,0 +1,12 @@
+#!/bin/bash
+
+Sink=$(pactl list short sinks | grep combined | cut -c 1)
+
+if [ "$1" == "-u" ]; then
+  V=$(pactl list sinks | grep -A 9 "Sink #$Sink" | grep 'Volume' | grep -Po '\d+\%' | head -1 | sed 's/\%//g')
+  if [ "$V" -lt "150" ]; then
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+  fi
+elif [ "$1" == "-d" ]; then
+  pactl set-sink-volume @DEFAULT_SINK@ -5%
+fi

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+xrandr --output DisplayPort-4 --mode 1920x1080 --pos 0x420
+xrandr --output DVI-D-1 --mode 1920x1080 --pos 1920x420
+xrandr --output HDMI-A-1 --mode 1920x1080 --pos 3840x0 --rotate right
+
+wal -Rn
+(nitrogen --restore)
+(compton &)
+(sxhkd &)
+
+udisksctl mount -b /dev/disk/by-label/LOCK &>/dev/null
+
+(keepassxc &)
+(discord &)
+(riot-desktop &)
+(mailspring &)
+
+(polybar main &)
+(polybar left &)
+(polybar right &)
+xdo lower $(xdo id -n polybar)
