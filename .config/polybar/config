@@ -1,0 +1,200 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   Created By Aditya Shakya.
+;
+;==========================================================
+
+[global/wm]
+margin-bottom = -12
+
+;==========================================================
+
+[colors]
+background = #80000000
+foreground = ${xrdb:foreground}
+highlight = ${xrdb:color2}
+highlight-dark = ${xrdb:color1}
+
+;==========================================================
+
+[bar/main]
+width = 1872
+height = 24
+offset-y = 12
+offset-x = 24
+
+monitor = DVI-D-1
+
+line-size = 2
+
+font-0 = "DroidSansMono Nerd Font Mono:pixelsize=10;2"
+font-1 = "DroidSansMono Nerd Font Mono:pixelsize=24"
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-center = xwindow
+modules-left = sepempty bspwm sep applauncher
+modules-right = audio sep ram sep cpu sep date sep power
+
+tray-position = left
+tray-background = ${colors.background}
+
+;==========================================================
+
+[bar/left]
+width = 88
+height = 24
+offset-y = 12
+offset-x = 1808
+
+monitor = DisplayPort-4
+
+line-size = 2
+
+font-0 = "DroidSansMono Nerd Font Mono:pixelsize=10;2"
+font-1 = "DroidSansMono Nerd Font Mono:pixelsize=24"
+
+background = #00000000
+; background = #aa0000
+foreground = ${colors.foreground}
+
+modules-right = sepempty bspwm sepempty
+
+;==========================================================
+
+[bar/right]
+width = 88
+height = 24
+offset-y = 12
+offset-x = 24
+
+monitor = HDMI-A-1
+
+line-size = 2
+
+font-0 = "DroidSansMono Nerd Font Mono:pixelsize=10;2"
+font-1 = "DroidSansMono Nerd Font Mono:pixelsize=24"
+
+background = #00000000
+; background = #aa0000
+foreground = ${colors.foreground}
+
+modules-left = sepempty bspwm sepempty
+
+;==========================================================
+;                                                   MODULES
+;==========================================================
+
+[module/sep]
+type = custom/text
+
+content = %{T2}|%{T-}
+content-foreground = #80333333
+;==========================================================
+
+[module/sepempty]
+type = custom/text
+
+content = " "
+content-background = ${colors.background}
+
+;==========================================================
+
+[module/arch]
+type = custom/text
+
+content = drew@och — Manjaro
+content-padding = 1
+
+;==========================================================
+
+[module/power]
+type = custom/text
+
+content = ⏻
+content-padding = 1
+
+click-left = /home/drew/.local/bin/rofi_scripts/power.sh
+
+;==========================================================
+
+[module/bspwm]
+type = internal/bspwm
+
+ws-icon-default = "  "
+
+label-focused = %icon%
+label-occupied = %icon%
+label-empty = %icon%
+label-focused-foreground = ${colors.highlight}
+label-occupied-foreground = ${colors.highlight-dark}
+
+format-background = ${colors.background}
+label-empty-background = ${colors.background}
+label-focused-background = ${colors.background}
+label-occupied-background = ${colors.background}
+
+;==========================================================
+
+[module/applauncher]
+type = custom/text
+
+content = 
+content-padding = 1
+
+click-left = /home/drew/.local/bin/rofi_scripts/favourites.sh
+
+;==========================================================
+
+[module/xwindow]
+type = internal/xwindow
+
+format-padding = 1
+
+label-maxlen = 50
+
+;==========================================================
+
+[module/date]
+type = internal/date
+
+interval = 15.0
+date = %l:%M%P
+date-alt = %b %d, %Y
+
+;==========================================================
+
+[module/cpu]
+type = internal/cpu
+
+label = CPU %percentage%%
+
+;==========================================================
+
+[module/ram]
+type = internal/memory
+
+label = RAM %percentage_used%%
+
+;==========================================================
+
+[module/audio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+
+label-muted = ﱝ
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳

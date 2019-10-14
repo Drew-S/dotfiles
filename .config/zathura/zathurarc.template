@@ -1,0 +1,5 @@
+set recolor-darkcolor "${COLOR2}"
+set recolor-lightcolor "${COLOR1}"
+set default-bg "${COLOR1}"
+set recolor true
+set selection-clipboard clipboard

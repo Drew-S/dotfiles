@@ -1,0 +1,50 @@
+super + Return
+	kitty
+
+super + @space
+	rofi -show drun -show-icons
+
+super + Escape
+    pkill -USR1 -x sxhkd
+
+super + alt + {q,r}
+    bspc {quit,wm -r}
+
+super + {_,shift +}q
+    bspc node -{c,k}
+
+super + m
+    bspc dexktop -l next
+
+super + {_,shift +}{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift +}{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {t,shift + t,s}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+super + f
+	bspc node --state \~fullscreen
+
+super + bracket{left,right}
+    bspc desktop -f {prev,next}.local
+
+super + {comma,period}
+    bspc node -d {prev,next}.local --follow
+
+super + {r,shift + r}
+	bspc node @/ -R {90, 270}
+
+XF86Audio{Raise,Lower}Volume
+    pactl_volume_wrapper -{u,d}
+
+XF86Audio{Next,Prev}
+    playerctl {next,previous}
+
+XF86AudioPlay
+    playerctl play-pause
+
+XF86AudioStop
+    playerctl stop

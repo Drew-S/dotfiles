@@ -1,0 +1,30 @@
+* {
+  font: "DroidSansMono Nerd Font Mono 14";
+  text-color: #e3e5ee;
+}
+#window {
+  children: [ listview, message ];
+  background-color: #100f1580;
+  padding: 20px;
+}
+#listview {
+  spacing: 39px;
+  layout: horizontal;
+  background-color: #100f1500;
+}
+#element {
+  padding: 50px 50px 50px 50px;
+  background-color: #ffffff20;
+}
+#element.selected {
+  background-color: #3b5584;
+  text-color: black;
+}
+#message {
+  background-color: #100f1500;
+  padding: 20px 0px 0px 10px;
+}
+#textbox {
+  background-color: #100f1500;
+  text-color: white;
+}
